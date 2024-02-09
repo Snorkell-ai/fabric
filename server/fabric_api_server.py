@@ -48,6 +48,11 @@ def auth_required(f):
 
     Returns:
         The decorated function
+
+    Raises:
+        KeyError: If 'Authorization' header is not found in the request.
+        TypeError: If 'Authorization' header value is not a string.
+        ValueError: If the authentication token is invalid or expired.
     """
 
     @wraps(f)
@@ -97,6 +102,9 @@ def check_auth_token(token, route):
 
     Returns:
         str: The user corresponding to the provided token and route if valid, otherwise returns "Unauthorized: You are not authorized for this API".
+
+    Raises:
+        KeyError: If the provided route is not found in the valid_tokens dictionary.
     """
 
     # Check if token is valid for the given route and return corresponding user
