@@ -54,9 +54,6 @@ def favicon():
 
     Returns:
         Response object with the favicon.ico file
-
-    Raises:
-         -
     """
 
     return send_from_directory(
@@ -72,6 +69,9 @@ def index():
 
     Returns:
         str: The rendered HTML template with the response data.
+
+    Raises:
+        SomeException: If there is an error in processing the POST request or sending the request to the API endpoint.
     """
 
     if request.method == "POST":
